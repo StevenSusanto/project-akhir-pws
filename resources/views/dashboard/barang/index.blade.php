@@ -19,7 +19,7 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>Items</th>
+              <th>Article</th>
               <th>Categories</th>
               <th>Action</th>
             </tr>

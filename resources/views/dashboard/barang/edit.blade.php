@@ -3,7 +3,7 @@
     <div class="card-body">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Edit Berita</h3>
+                <h3 class="card-title">Edit Items</h3>
             </div>
             <form method="POST" action="/dashboard/barang/{{ $barang->slug }}">
             @method('put')
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group">
                     <label for="slug">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug Berita" value="{{ old('slug', $berita->slug) }}">
+                    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug Berita" value="{{ old('slug', $barang->slug) }}">
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>

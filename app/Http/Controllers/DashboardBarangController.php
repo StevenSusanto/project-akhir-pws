@@ -53,7 +53,7 @@ class DashboardBarangController extends Controller
 
         Barang::create($validatedData);
 
-        return redirect('/dashboard/barang')->with('sukses', 'Berita Baru Berhasil Ditambahkan!');
+        return redirect('/dashboard/barang')->with('sukses', 'Items Succes to Add');
     }
 
     /**
@@ -62,10 +62,10 @@ class DashboardBarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(Barang $barum)
+    public function show(Barang $barang)
     {
         return view('dashboard.barang.show',[
-            'barang'=> $barum
+            'barang'=> $barang
         ]);
     }
 
@@ -75,10 +75,10 @@ class DashboardBarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barum)
+    public function edit(Barang $barang)
     {
         return view('dashboard.barang.edit', [
-            'barang'=> $barum,
+            'barang'=> $barang,
             'categories'=> Category::all()
         ]);
     }
@@ -90,7 +90,7 @@ class DashboardBarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barum)
+    public function update(Request $request, Barang $barang)
     {
         $rules = [
             'article' => 'required|max:255',
@@ -98,17 +98,17 @@ class DashboardBarangController extends Controller
             'varians' => 'required'
         ];
         
-        if($request->slug != $barum->slug){
-            $rules['slug']='required|unique:beritas';
+        if($request->slug != $barang->slug){
+            $rules['slug']='required|unique:barangs';
         }
         $validatedData = $request->validate($rules);
 
         $validatedData['excerpt'] = Str::limit(strip_tags($request->varians), 100);
         
-        Barang::where('id', $barum->id)
+        Barang::where('id', $barang->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/barang')->with('sukses', 'Berita Berhasil Di Update!');
+        return redirect('/dashboard/barang')->with('sukses', 'Items Success to Update');
     }
 
     /**
@@ -117,11 +117,11 @@ class DashboardBarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barum)
+    public function destroy(Barang $barang)
     {
-        Barang::destroy($barum->id);
+        Barang::destroy($barang->id);
 
-        return redirect('/dashboard/barang')->with('sukses', 'Data Berita Berhasil Dihapus!');
+        return redirect('/dashboard/barang')->with('sukses', 'Items Success to Delete');
     }
 
     public function checkSlug(Request $request){

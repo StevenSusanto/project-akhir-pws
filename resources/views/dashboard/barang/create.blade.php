@@ -48,7 +48,7 @@
     <script>
         const article = document.querySelector('#article')
         const slug = document.querySelector('#slug')
-        judul_berita.addEventListener('change', function(){
+        article.addEventListener('change', function(){
             fetch('/dashboard/barang/checkSlug?article='+article.value)
             .then(response => response.json())
             .then(data => slug.value = data.slug)
